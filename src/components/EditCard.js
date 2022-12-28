@@ -14,6 +14,7 @@ const EditCard = () => {
 
   const navigate = useNavigate();
   const { id } = useParams();
+  console.log(id)
   const card = useCard(id);
 
   const form = useFormik({
@@ -46,7 +47,6 @@ const EditCard = () => {
         const { bizImage, ...body } = values;
         if (bizImage) body.bizImage = bizImage;
         await updateCard(id, body);
-        toast("Card updated");
         navigate("/my-cards");
       } catch ({ response }) {
         if (response && response.status === 400) setError(response.data);
@@ -118,7 +118,7 @@ const EditCard = () => {
             disabled={!form.isValid}
             className="btn"
           >
-            Edit Card
+            Save
           </button>
         </div>
       </form>

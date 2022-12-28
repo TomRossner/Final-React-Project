@@ -16,11 +16,16 @@ export const updateCard = (card, id) => {
     return httpService.patch(`/cards/${id}`, card);
 }
 
+export const getCard = async (id) => {
+    return httpService.get(`/cards/${id}`);
+}
+
 const cardsService = {
     createCard,
     getAll,
     deleteCard,
     updateCard,
+    getCard
 };
 
 export default cardsService;

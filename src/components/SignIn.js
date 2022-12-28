@@ -46,7 +46,7 @@ const SignIn = () => {
   return (
     <>
     <form noValidate onSubmit={form.handleSubmit}>
-    <h2>Sign up</h2>
+    <h2>Sign in</h2>
 
     {error && <div className='error'><p>{error}</p></div>}
       <Input
