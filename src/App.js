@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
-import SignupBiz from "./components/SignupBiz";
 import Logout from "./components/Logout";
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
@@ -12,15 +13,18 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import CreateCard from "./components/CreateCard";
 import DeleteCard from "./components/DeleteCard";
 import EditCard from "./components/EditCard";
+import About from './components/About';
 
 function App() {
   return (
     <div className='container'>
+      <ToastContainer />
       <NavBar/>
       <main className='content'>
         <Routes>
-            <Route path="/" element={<Home/>}/> 
+            <Route path="/final-react-project" element={<Home/>}/> 
             <Route path="my-cards" element={<MyCards/>}/>
+            <Route path="about" element={<About/>}/>
             <Route
             path="/my-cards/edit/:id"
             element={
@@ -55,7 +59,6 @@ function App() {
           />
             <Route path="sign-in" element={<SignIn/>}/>
             <Route path="sign-up" element={<SignUp/>}/>
-            <Route path="sign-up-biz" element={<SignupBiz/>}/>
             <Route path="logout" element={<Logout/>}/>
         </Routes>
       </main>

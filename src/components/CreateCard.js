@@ -42,8 +42,7 @@ const CreateCard = () => {
         const { bizImage, ...body } = values;
         if (bizImage) body.bizImage = bizImage;
         await createCard(body);
-        console.log("created")
-        toast("New card has been created");
+        toast("New card created successfully");
         navigate("/my-cards");
       } catch ({ response }) {
         if (response && response.status === 400) setError(response.data);

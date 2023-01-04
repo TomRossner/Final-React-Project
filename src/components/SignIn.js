@@ -4,6 +4,7 @@ import Joi from 'joi';
 import { useFormik } from 'formik';
 import { useAuth } from '../context/auth.context';
 import Input from './Input';
+import { toast } from "react-toastify"
 
 const SignIn = () => {
   const { login } = useAuth(); 
@@ -37,7 +38,8 @@ const SignIn = () => {
     onSubmit: async (values) => {
       try{
         await login(values);
-        navigate("/");
+        toast("Login successful");
+        navigate("/final-react-project");
       }catch ({response}){
         if (response && response.status === 400) setError(response.data);
       }

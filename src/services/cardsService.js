@@ -12,7 +12,8 @@ export const deleteCard = (id) => {
     return httpService.delete(`/cards/${id}`);
 }
 
-export const updateCard = (card, id) => {
+export const updateCard = (id, card) => {
+    console.log(card)
     return httpService.patch(`/cards/${id}`, card);
 }
 

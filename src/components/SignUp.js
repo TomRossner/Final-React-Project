@@ -4,10 +4,12 @@ import { useFormik } from 'formik';
 import Joi from 'joi';
 import { useAuth } from '../context/auth.context';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
   const { createUser } = useAuth();
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
   const JoiValidation = (scheme) => {
     return (values) => {
@@ -38,13 +40,17 @@ const SignUp = () => {
     }),
     onSubmit: async (values) => {
       try{
-        await createUser({...values, biz: false})
-        navigate("/sign-in")
+        await createUser({...values, biz: isChecked ? true : false});
+        toast("Registered successfully");
+        navigate("/sign-in");
       }catch ({response}){
         if (response && response.status === 400) setError(response.data);
       }
     }
   })
+
+  const handleCheck = () => setIsChecked(!isChecked);
+
   return (
     <>
     <form noValidate onSubmit={form.handleSubmit}>
@@ -71,6 +77,10 @@ const SignUp = () => {
         {...form.getFieldProps("name")}
         error={form.touched.name && form.errors.name}
       />
+      <div className='checkbox'>
+        <input type='checkbox' checked={isChecked ? true : false} onChange={handleCheck}/>
+        <label>I own a business</label>
+      </div>
       <div className='clear'></div>
       <button disabled={!form.isValid} className={form.isValid ? "btn": "btn disabled" } type='submit'>Sign up</button>
     </form>
@@ -78,4 +88,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default SignUp;

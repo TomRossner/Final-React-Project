@@ -14,7 +14,6 @@ const EditCard = () => {
 
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id)
   const card = useCard(id);
 
   const form = useFormik({
@@ -24,7 +23,7 @@ const EditCard = () => {
       bizDescription: "",
       bizAddress: "",
       bizPhone: "",
-      bizImage: "",
+      bizImage: ""
     },
     validate: formikValidateUsingJoi({
       bizName: Joi.string().min(2).max(255).required().label("Name"),
@@ -43,12 +42,15 @@ const EditCard = () => {
       bizImage: Joi.string().min(11).max(1024).label("Image").allow(""),
     }),
     async onSubmit(values) {
+      console.log(values)
       try {
         const { bizImage, ...body } = values;
         if (bizImage) body.bizImage = bizImage;
         await updateCard(id, body);
+        toast("Card changes saved");
         navigate("/my-cards");
       } catch ({ response }) {
+        console.log(response)
         if (response && response.status === 400) setError(response.data);
       }
     },

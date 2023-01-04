@@ -7,7 +7,6 @@ export const useCard = (id) => {
   useEffect(() => {
     const getCard = async () => {
       const { data } = await cardsService.getCard(id);
-      console.log(data)
       setCard(data);
     }
 

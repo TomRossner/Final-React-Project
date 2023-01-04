@@ -7,7 +7,7 @@ const Logout = () => {
   const { logout } = useAuth();
   useEffect(() => {
     logout();
-    navigate("/")
+    navigate("/final-react-project")
   }, [logout, navigate])
   return null;
 }

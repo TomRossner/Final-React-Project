@@ -20,6 +20,14 @@ body{
   min-height: 100vh;
 }
 
+.homepage-container{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
 .content{
   width: 70%;
   margin: 0 auto;
@@ -29,6 +37,11 @@ body{
 
 h1{
   font-size: 2.5rem;
+}
+
+.homepage-para{
+  width: 80%;
+  text-align: left;
 }
 
 header{
@@ -140,6 +153,12 @@ form h2{
   cursor: not-allowed;
 }
 
+.checkbox{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
 .error{
   padding: 0.5em;
   text-align: center;
@@ -203,11 +222,63 @@ hr{
   width: 100%;
 }
 
+footer{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.about-para{
+  width: 100%;
+}
+
+.icons-container{
+  display: flex;
+  gap: 1.5em;
+  align-items: center;
+  justify-content: center; 
+}
+
+.icons-container .nav-link{
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+.icons-container .icon{
+  scale: 1.5;
+}
+
+#github, #linkedin{
+  color: rgba(0, 0, 0, 0.7);
+  transition: color 0.2s linear;
+}
+
+#github:hover{
+  color: rgb(26, 29, 43);
+}
+
+#linkedin:hover{
+  color: rgb(26, 85, 194);
+}
+
+@media screen and (min-width: 150px) and (max-width: 500px) {
+  footer p{
+      font-size: 0.8rem;
+      word-break: normal;
+  }
+}
 
 
 @media screen and (min-width: 851px) {
   .icon{
     display: none;
+  }
+  
+  .icons-container .icon{
+    display: block;
   }
 }
 
@@ -220,6 +291,36 @@ hr{
 @media screen and (max-width: 850px) {
   nav{
     width: 98%;
+  }
+
+  .container{
+    width: 100%;
+  }
+  
+  .content{
+    width: 95%;
+    max-width: 500px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+
+  h1{
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .homepage-container{
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .homepage-para{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .icon{

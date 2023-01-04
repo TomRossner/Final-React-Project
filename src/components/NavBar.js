@@ -12,20 +12,21 @@ const NavBar = () => {
     <header>
         <nav>
             <ul>
-              <Link className='link' to="/"><span className='logo'>BIZCARDS</span></Link>
+              <Link className='link' to="/final-react-project"><span className='logo'>BIZCARDS</span></Link>
               {user?.biz && <Link className='link' to="my-cards">My Cards</Link>}
             </ul>
             <ul className={mobileMenu ? "nav-links open" : "nav-links"}>
               {!user ?
                 <>
                   {mobileMenu && <RxCross1 className='icon' onClick={toggleMobileMenu}/>}
+                  <Link className='link' to="about" onClick={() => setMobileMenu(false)}>About</Link>
                   <Link className='link' to="sign-in" onClick={() => setMobileMenu(false)}>Sign in</Link>
                   <Link className='link' to="sign-up" onClick={() => setMobileMenu(false)}>Sign up</Link>
-                  <Link className='link' to="sign-up-biz" onClick={() => setMobileMenu(false)}>Sign up Business</Link>
                 </>
                : (
                 <>
                   {mobileMenu && <RxCross1 className='icon' onClick={toggleMobileMenu}/>}
+                  <Link className='link' to="about" onClick={() => setMobileMenu(false)}>About</Link>
                   <Link className='link' to="logout">Logout</Link>
                 </>
                )}
